@@ -1,2 +1,2 @@
 # SQL-Visualizations
-A collection of my SQL projects in MySQL and PowerBI
+A collection of my SQL projects, modeled using MySQL and visualized using PowerBI
