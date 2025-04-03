@@ -1,6 +1,6 @@
 Financial and Economic Stock Data Preparation in SQL
 Goal: Understand the impact of economic data on various stock data such as trading volume, daily high, daily low, as well as Forex, retail sales, bankruptcy rate, consumer spending.
-SQL Type: MySQL with MySQL Workbench
+SQL Type: MySQL in MySQL Workbench
 
 Dataset: 
 - Title: Stock Market Data January 2000 - March 2008
