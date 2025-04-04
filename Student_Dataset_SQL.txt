@@ -1,0 +1,148 @@
+SQL Project
+
+Goal: Understand how college students' home environment, health, responsibilities, and internet access impact their attendance and academic performance.
+Source: https://www.kaggle.com/datasets/mahmoudelhemaly/students-grading-dataset
+SQL Type: MySQL in MySQL Workbench
+
+Columns:
+________________________________________________________________________________________________________________________________________________________________________________
+
+Student_ID: Unique identifier for each student
+First_Name:Student’s first name
+Last_Name: Student’s last name
+Email: Contact email (can be anonymized)
+Gender: Male, Female, Other
+Age: Age of the student
+Department: Student's department (e.g., CS, Engineering, Business)
+Attendance (%): Attendance percentage (0-100%)
+Midterm_Score: Midterm exam score (out of 100)
+Final_Score: Final exam score (out of 100)
+Assignments_Avg: Average score of all assignments (out of 100)
+Quizzes_Avg: Average quiz scores (out of 100)
+Participation_Score: Score based on class participation (0-10)
+Projects_Score:	Project evaluation score (out of 100)
+Total_Score: Weighted sum of all grades
+Grade: Letter grade (A, B, C, D, F)
+Study_Hours_per_Week: Average study hours per week
+Extracurricular_Activities: Whether the student participates in extracurriculars (Yes/No)
+Internet_Access_at_Home: Does the student have access to the internet at home? (Yes/No)
+Parent_Education_Level: Highest education level of parents (None, High School, Bachelor's, Master's, PhD)
+Family_Income_Level: Low, Medium, High
+Stress_Level (1-10): Self-reported stress level (1: Low, 10: High)
+Sleep_Hours_per_Night: Average hours of sleep per night
+
+
+SQL Queries:
+________________________________________________________________________________________________________________________________________________________________________________
+
+
+-- Creating the database to hold the student data
+CREATE DATABASE students;
+
+--Creating the primary table with all columns included
+USE students;
+
+
+CREATE TABLE student_data(
+Student_ID CHAR(255),
+First_Name CHAR(255),
+Last_Name CHAR(255),
+Email CHAR(255),
+Gender CHAR(255),
+Age INT,
+Department CHAR(255),
+Attendance_percent FLOAT(255, 2),
+Midterm_Score FLOAT(255, 2),
+Final_Score FLOAT(255, 2),
+Assignments_Avg FLOAT(255, 2),
+Quizzes_Avg FLOAT(255, 2),
+Participation_Score FLOAT(255, 2),
+Projects_Score FLOAT(255, 2),
+Total_Score FLOAT(255, 2),
+Grade CHAR(255),
+Study_Hours_per_Week FLOAT(255, 2),
+Extracurricular_Activities CHAR(255),
+Internet_Access_at_Home CHAR(255),
+Parent_Education_Level CHAR(255),
+Family_Income_Level CHAR(255),
+Stress_Level INT,
+Sleep_Hours_per_Night FLOAT (255, 2)
+);
+
+-- Create new tables to simulate a database with multiple tables
+
+-- Create table with only student's personal information
+
+CREATE TABLE student_info AS
+SELECT Student_ID, First_Name, Last_Name, Email, Gender, Age, Department
+FROM student_data;
+
+-- Create table with attendance and grading data
+
+CREATE TABLE student_academics AS
+SELECT Student_ID,
+Department, 
+Attendance_percent, 
+Midterm_Score,
+Final_Score,
+Assignments_Avg,
+Quizzes_Avg,
+Participation_Score,
+Projects_Score,
+Total_Score,
+Grade
+FROM Student_data;
+
+
+-- Create table with external factors related to the students' non-academic life
+
+CREATE TABLE student_factors AS 
+SELECT Study_Hours_per_Week, 
+Extracurricular_Activities, 
+Internet_Access_at_Home, 
+Parent_Education_Level, 
+Family_Income_Level, 
+Stress_Level,
+Sleep_Hours_per_Night
+FROM student_data;
+
+
+-- Exploratory Data Analysis
+
+SELECT Student_ID, Gender, Age, Department, Attendance_percent, 
+ROUND(AVG(Attendance_percent) OVER (PARTITION BY Department),2) AS Avg_Attendance,
+ROUND(COUNT(Age) OVER (PARTITION BY Age),2) AS Num_of_Age,
+ROUND(AVG(Midterm_score) OVER (PARTITION BY Department),2) AS Avg_Midterm_Score,
+ROUND(AVG(Final_Score) OVER (PARTITION BY Department),2) AS Avg_Final_Score,
+ROUND(AVG(Total_Score) OVER (PARTITION BY Department),2) AS Avg_Total_Score,
+ROUND(AVG(Study_Hours_per_Week) OVER (PARTITION BY Department),2) AS Avg_Study_Hours_per_Week,
+ROUND(AVG(Stress_Level) OVER (PARTITION BY Department),2) AS Avg_Stress_Level,
+ROUND(AVG(Sleep_Hours_per_Night) OVER (PARTITION BY Department),2) AS Avg_Sleep_Hours
+FROM student_data
+ORDER BY Attendance_percent DESC;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
