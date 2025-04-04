@@ -1,10 +1,12 @@
-Stock Market Analysis 
-
+Financial and Economic Stock Data Preparation in SQL
 Goal: Understand the impact of economic data on various stock data such as trading volume, daily high, daily low, as well as Forex, retail sales, bankruptcy rate, consumer spending.
-Stock Market Data January 2000 - March 2008
-Source: https://www.kaggle.com/datasets/khushikyad001/finance-and-economics-dataset-2000-present
+SQL Type: MySQL in MySQL Workbench
+Dataset: 
+- Title: Stock Market Data January 2000 - March 2008
+- Source: https://www.kaggle.com/datasets/khushikyad001/finance-and-economics-dataset-2000-present?resource=download
 
-
+This dataset provides daily financial and macroeconomic data, including stock market prices, 
+GDP growth, inflation, interest rates, consumer spending, exchange rates, and more.
 
 Columns:
 _____________________________________________________________________________________
