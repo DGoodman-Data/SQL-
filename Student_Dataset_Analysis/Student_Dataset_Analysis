@@ -1,8 +1,12 @@
 Student Dataset Analysis
-
-Goal: Understand how college students' home environment, health, responsibilities, and internet access impact their attendance and academic performance.
-Source: https://www.kaggle.com/datasets/mahmoudelhemaly/students-grading-dataset
 SQL Type: MySQL in MySQL Workbench
+
+Goal: Understand how college students' home environment, health, responsibilities, 
+and internet access impact their attendance and academic performance.
+Dataset:
+- Title: Students Grading Dataset
+- Source: https://www.kaggle.com/datasets/mahmoudelhemaly/students-grading-dataset
+
 
 Columns:
 ________________________________________________________________________________________________________________________________________________________________________________
